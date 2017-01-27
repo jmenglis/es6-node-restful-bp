@@ -10,7 +10,8 @@
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,es2016\"",
     "build": "babel src -s inline -D -d app --presets es2015,es2016",
     "start": "node app",
-    "prestart": "yarn build"
+    "prestart": "yarn build",
+    "test": "mocha --compilers js:babel-register"
   },
   "dependencies": {
     "body-parser": "^1.16.0",
