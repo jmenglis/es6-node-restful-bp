@@ -31,3 +31,8 @@ getConnected((err, db) => {
     log.info('Server has been started on port', port);
   });
 });
+
+app.get('/', (req, res) => {
+  res.send('OK');
+});
+
