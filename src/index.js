@@ -6,7 +6,9 @@ import { getConnected } from './lib/db'
 let app = express();
 let log = logger.child({req_id: './src/index.js'}, true);
 
-// Middlewares
+/**
+ * Middlewares are loaded here
+ */
 app.use(compression());
 app.use(bodyParser.json({
   limit: '10mb'
@@ -15,10 +17,10 @@ app.use(bodyParser.urlencoded({
   limit: '10mb'
 }));
 
-app.get('/', function(req, res) {
-  res.sendStatus(200).send('OK');
-});
-
+/**
+ * Server start process by passing DB as local variable
+ * Allows for persistent database to be used instead of opening and closing.
+ */
 getConnected((err, db) => {
   if (err) {
     log.error(err);
