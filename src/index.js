@@ -26,13 +26,16 @@ getConnected((err, db) => {
     log.error(err);
   }
   app.locals.db = db;
-  let server = app.listen(4008, () => {
-    let port = server.address().port;
-    log.info('Server has been started on port', port);
-  });
+});
+
+let server = app.listen(4008, () => {
+  let port = server.address().port;
+  log.info('Server has been started on port', port);
 });
 
 app.get('/', (req, res) => {
   res.send('OK');
 });
+
+module.exports = server;
 
