@@ -9,9 +9,11 @@ describe('Server?', () => {
       api.get('/')
         .expect(200, done);
     });
+
     it('should return 404 for everything else', (done) => {
       api.get('/something-else')
         .expect(404, done);
     });
+
   });
 });
