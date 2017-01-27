@@ -1,0 +1,31 @@
+import compression from 'compression'
+import express from 'express'
+import bodyParser from 'body-parser'
+import logger from './lib/logger'
+import { getConnected } from './lib/db'
+let app = express();
+let log = logger.child({req_id: './src/index.js'}, true);
+
+// Middlewares
+app.use(compression());
+app.use(bodyParser.json({
+  limit: '10mb'
+}));
+app.use(bodyParser.urlencoded({
+  limit: '10mb'
+}));
+
+app.get('/', function(req, res) {
+  res.sendStatus(200).send('OK');
+});
+
+getConnected((err, db) => {
+  if (err) {
+    log.error(err);
+  }
+  app.locals.db = db;
+  let server = app.listen(4008, () => {
+    let port = server.address().port;
+    log.info('Server has been started on port', port);
+  });
+});

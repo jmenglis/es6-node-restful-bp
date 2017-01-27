@@ -1,0 +1,32 @@
+{
+  "name": "es6-node-restful-bp",
+  "version": "0.1.0",
+  "description": "es6 Node RESTful API Boilerplate",
+  "main": "app",
+  "repository": {},
+  "author": "Josh English <josh@joshenglish.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon -w src --exec \"babel-node src --presets es2015,es2016\"",
+    "build": "babel src -s inline -D -d app --presets es2015,es2016",
+    "start": "node app",
+    "prestart": "yarn build"
+  },
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "bunyan": "^1.8.5",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.22"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2016": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
+  }
+}
