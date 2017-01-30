@@ -27,5 +27,11 @@ describe('API?', () => {
           done();
         })
     });
+    it('it should GET a 404', (done) => {
+      request('http://localhost:4008')
+        .get('/blah')
+        .set('Accept', 'application/json')
+        .expect(404, done)
+    });
   });
 });
