@@ -26,5 +26,19 @@ describe('Server?', () => {
         .expect(404, done);
     });
 
+    it('it should GET a version', (done) => {
+      request('http://localhost:4008')
+        .get('/api')
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end(function(err, res) {
+          if (err) throw err;
+          console.log(res.body);
+          res.body.should.be.a('object');
+          // res.body.should.have.property('version');
+          done();
+        })
+    });
+
   });
 });
