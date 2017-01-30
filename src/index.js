@@ -3,8 +3,12 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import logger from './lib/logger'
 import { getConnected } from './lib/db'
+import Config from './configs/config'
+import api from './api'
+
 let app = express();
 let log = logger.child({req_id: './src/index.js'}, true);
+let config = Config();
 
 /**
  * Middlewares are loaded here
@@ -25,7 +29,7 @@ getConnected((err, db) => {
   if (err) {
     log.error(err);
   }
-  app.locals.db = db;
+  app.use('/api', api({ config, db }));
 });
 
 let server = app.listen(4008, () => {
@@ -34,7 +38,7 @@ let server = app.listen(4008, () => {
 });
 
 app.get('/', (req, res) => {
-  res.send('OK');
+  res.send('This is the es6 boilerplate api');
 });
 
 module.exports = server;
