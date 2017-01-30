@@ -7,11 +7,11 @@ describe('Server?', () => {
   describe('Is the Server responding to commands?', () => {
     let app;
     let server;
-    before(() => {
+    beforeEach(() => {
       app = require('../app/app');
       server = app.listen(4008);
     });
-    after(() => {
+    afterEach(() => {
       server.close();
     });
     it('it should return a 200 response', (done) => {
@@ -26,6 +26,20 @@ describe('Server?', () => {
         .expect(404, done);
     });
 
+  });
+});
+
+describe('API?', () => {
+  describe('/GET api', () => {
+    let app;
+    let server;
+    beforeEach(() => {
+      app = require('../app/app');
+      server = app.listen(4008);
+    });
+    afterEach(() => {
+      server.close()
+    });
     it('it should GET a version', (done) => {
       request('http://localhost:4008')
         .get('/api')
@@ -39,6 +53,5 @@ describe('Server?', () => {
           done();
         })
     });
-
   });
 });
