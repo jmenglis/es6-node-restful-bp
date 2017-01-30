@@ -7,11 +7,11 @@ describe('API?', () => {
   describe('/GET api', () => {
     let app;
     let server;
-    beforeEach(() => {
+    before(() => {
       app = require('../../app/app');
       server = app.listen(4008);
     });
-    afterEach(() => {
+    after(() => {
       server.close()
     });
     it('it should GET a version', (done) => {

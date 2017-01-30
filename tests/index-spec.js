@@ -7,11 +7,11 @@ describe('Server?', () => {
   describe('Is the Server responding to commands?', () => {
     let app;
     let server;
-    beforeEach(() => {
-      app = require('../app/app')
+    before(() => {
+      app = require('../app/app');
       server = app.listen(4008);
     });
-    afterEach(() => {
+    after(() => {
       server.close();
     });
     it('it should return a 200 response', (done) => {
