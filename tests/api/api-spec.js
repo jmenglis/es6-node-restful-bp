@@ -17,6 +17,7 @@ describe('API?', () => {
     it('it should GET a version', (done) => {
       request('http://localhost:4008')
         .get('/api')
+        .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200)
         .end(function(err, res) {
