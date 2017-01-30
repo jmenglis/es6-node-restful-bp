@@ -22,7 +22,7 @@ describe('API?', () => {
         .end(function(err, res) {
           if (err) throw err;
           console.log(res.body);
-          // res.body.should.be.a('object');
+          res.body.should.be.a('object');
           // res.body.should.have.property('version');
           done();
         })
