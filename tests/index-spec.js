@@ -45,11 +45,11 @@ describe('API?', () => {
         .get('/api')
         .set('Accept', 'application/json')
         .expect(200)
+        .expect('Content-Type', /json/)
         .end(function(err, res) {
           if (err) throw err;
-          console.log(res.body);
           res.body.should.be.a('object');
-          // res.body.should.have.property('version');
+          res.body.should.have.property('version');
           done();
         })
     });
