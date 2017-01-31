@@ -2,6 +2,7 @@ import compression from 'compression'
 import express from 'express'
 import bodyParser from 'body-parser'
 import logger from './lib/logger'
+import cors from 'cors'
 import { getConnected } from './lib/db'
 import Config from './configs/config'
 import api from './api'
@@ -13,6 +14,7 @@ let config = Config();
 /**
  * Middlewares are loaded here
  */
+app.use(cors());
 app.use(compression());
 app.use(bodyParser.json({
   limit: '10mb'
